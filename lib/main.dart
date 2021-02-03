@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kotykids/consts.dart';
 import 'package:kotykids/view/auth/loginScreen.dart';
  
 void main() => runApp(MyApp());
@@ -8,7 +9,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Material App',
-      home: loginScreen()
+      home: loginScreen(),
+      theme: ThemeData(primaryColor: primaryColor),
     );
   }
 }
