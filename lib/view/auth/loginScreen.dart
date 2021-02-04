@@ -61,7 +61,7 @@ class loginScreen extends StatelessWidget {
             ),
             TxtForm(
               title: "Password",
-              hint: "***********",
+              hint: "********",
               icon: Icon(
                 Icons.lock_outlined,
                 color: primaryColor,
