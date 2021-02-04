@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "418194992711",
+    "project_id": "kotykids",
+    "storage_bucket": "kotykids.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:418194992711:android:c659928036ccaa2b2b8b62",
+        "android_client_info": {
+          "package_name": "com.elmarakby.kotykids"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "418194992711-4dm3ua2k112otaj4d2kg8nqp1v16lul4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.elmarakby.kotykids",
+            "certificate_hash": "0c77cfbd4ffa0f488fa7d702efdd0ce6d7babb58"
+          }
+        },
+        {
+          "client_id": "418194992711-9sme2lq3tcmm6j1t106t9ckttaj3oq72.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCRdtiRJuQXtgZgNmXvrhSLneZhDGYZw28"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "418194992711-9sme2lq3tcmm6j1t106t9ckttaj3oq72.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

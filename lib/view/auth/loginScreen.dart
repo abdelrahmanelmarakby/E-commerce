@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:kotykids/consts.dart';
+import 'package:kotykids/core/view_model/auth_view_model.dart';
 import 'package:kotykids/view/widgets/Button.dart';
+import 'package:kotykids/view/widgets/SocialMediaButton.dart';
 import 'package:kotykids/view/widgets/TextForm.dart';
 import 'package:kotykids/view/widgets/Txt.dart';
 
 // ignore: camel_case_types
-class loginScreen extends StatelessWidget {
+class loginScreen extends GetWidget<AuthViewModel> {
   const loginScreen({Key key}) : super(key: key);
 
   @override
@@ -17,7 +20,9 @@ class loginScreen extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Column(
+        child: ListView(
+          addAutomaticKeepAlives: true,
+          keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -91,13 +96,16 @@ class loginScreen extends StatelessWidget {
               align: Alignment.center,
               color: Colors.grey,
             ),
-            FlatButton(
-              onPressed: () {},
-              child: Image.network(
-                  "https://www.google.com/images/hpp/gsa_super_g-64.gif",
-                  height: MediaQuery.of(context).size.height / 14,
-                  fit: BoxFit.fitWidth),
-            )
+            SocialMediaButton(
+              imageSrc: "assets/Glogo.png",
+              text: "Sign in with Google",
+              onPressed: controller.googleSignInMethod(),
+            ),
+            SizedBox(height: 10),
+            SocialMediaButton(
+              imageSrc: "assets/Flogo.png",
+              text: "Sign in with Facebook",
+            ),
           ],
         ),
       ),
