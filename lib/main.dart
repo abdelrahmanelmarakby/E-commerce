@@ -5,9 +5,9 @@ import 'package:kotykids/consts.dart';
 import 'package:kotykids/core/Util/binding.dart';
 import 'package:kotykids/view/auth/loginScreen.dart';
 
-void main() {
+void main()async {
   WidgetsFlutterBinding.ensureInitialized();
-  Firebase.initializeApp();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 

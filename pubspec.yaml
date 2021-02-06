@@ -30,8 +30,9 @@ dependencies:
   cupertino_icons: ^1.0.0
   get: ^3.24.0
   google_sign_in: ^4.5.9
-  firebase_core: ^0.7.0
   firebase_auth: ^0.20.0+1
+  firebase_core: ^0.7.0
+
 
 
 
