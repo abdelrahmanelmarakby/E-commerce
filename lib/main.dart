@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kotykids/consts.dart';
 import 'package:kotykids/core/Util/binding.dart';
-import 'package:kotykids/view/auth/loginScreen.dart';
+import 'package:kotykids/view/control_view.dart';
 
-void main()async {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(MyApp());
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       initialBinding: Binding(),
       title: 'KotyKids',
       defaultTransition: Transition.rightToLeftWithFade,
-      home: loginScreen(),
+      home: ControlView(),
       theme: ThemeData(primaryColor: primaryColor),
     );
   }

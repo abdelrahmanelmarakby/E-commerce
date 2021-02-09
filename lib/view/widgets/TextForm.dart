@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kotykids/view/widgets/Txt.dart';
 
-
 class TxtForm extends StatelessWidget {
   final String title;
   final String hint;
@@ -10,7 +9,7 @@ class TxtForm extends StatelessWidget {
   final Function validator;
   const TxtForm({
     Key key,
-    this.title="add field name",
+    this.title = "add field name",
     this.hint,
     this.icon,
     this.onSaved,
@@ -30,7 +29,8 @@ class TxtForm extends StatelessWidget {
           onSaved: onSaved,
           validator: validator,
           decoration: InputDecoration(
-              hintText:hint,
+              hintText: hint,
+              hintStyle: TextStyle(color: Colors.grey),
               suffixIcon: icon,
               fillColor: Colors.green.withOpacity(.1),
               filled: true),

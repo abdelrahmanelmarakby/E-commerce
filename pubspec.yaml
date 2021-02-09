@@ -32,6 +32,9 @@ dependencies:
   google_sign_in: ^4.5.9
   firebase_auth: ^0.20.0+1
   firebase_core: ^0.7.0
+  cloud_firestore: ^0.16.0
+  animate_do: ^1.7.5
+  flashy_tab_bar: ^0.0.3
 
 
 

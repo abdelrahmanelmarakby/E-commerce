@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kotykids/consts.dart';
 import 'package:kotykids/core/view_model/auth_view_model.dart';
-import 'package:kotykids/view/auth/register_view.dart';
 import 'package:kotykids/view/widgets/Button.dart';
-import 'package:kotykids/view/widgets/SocialMediaButton.dart';
 import 'package:kotykids/view/widgets/TextForm.dart';
 import 'package:kotykids/view/widgets/Txt.dart';
 
-// ignore: camel_case_types
-class loginScreen extends GetWidget<AuthViewModel> {
-  loginScreen({Key key}) : super(key: key);
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+import '../../consts.dart';
+
+class RegisterView extends GetWidget<AuthViewModel> {
   @override
   Widget build(BuildContext context) {
     controller.onInit();
+    final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -28,35 +26,38 @@ class loginScreen extends GetWidget<AuthViewModel> {
             addAutomaticKeepAlives: true,
             keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Txt(
-                    title: "Welcome,",
-                    color: Colors.black,
-                    size: 30,
-                  ),
-                  GestureDetector(
-                    onTap: () => Get.to(RegisterView()),
-                    child: Txt(
-                      title: "SignUp",
-                      color: primaryColor,
-                      size: 18,
-                    ),
-                  )
-                ],
+              Txt(
+                title: "SignUp",
+                color: Colors.black,
+                size: 30,
               ),
               SizedBox(
                 height: 10,
               ),
               Txt(
-                title: "Sign in to continue",
+                title: "Sign up to create new account",
                 size: 14,
                 color: Colors.grey,
                 align: Alignment.topLeft,
               ),
               SizedBox(
                 height: 40,
+              ),
+              TxtForm(
+                title: "Name",
+                hint: "yourname",
+                icon: Icon(
+                  Icons.person_outline,
+                  color: primaryColor,
+                ),
+                onSaved: (value) {
+                  controller.name = value;
+                },
+                validator: (value) {
+                  if (value == null) {
+                    print("ERROR");
+                  }
+                },
               ),
               TxtForm(
                 title: "Email",
@@ -96,36 +97,15 @@ class loginScreen extends GetWidget<AuthViewModel> {
               SizedBox(
                 height: 10,
               ),
-              Txt(
-                title: "Forget password ?",
-                size: 14,
-                align: Alignment.topRight,
-                color: Colors.grey,
-              ),
-              SizedBox(
-                height: 20,
-              ),
               Button(
                 onPressed: () {
                   if (_formKey.currentState.validate()) {
                     _formKey.currentState.save();
-                    controller.signInWithEmailAndPassword();
+                    controller.CreateAccountWithEmailAndPassword();
                   }
                 },
-                title: "SIGN IN",
+                title: "SIGN UP",
               ),
-              SizedBox(height: 10),
-              Txt(
-                title: "- OR -",
-                align: Alignment.center,
-                color: Colors.grey,
-              ),
-              SocialMediaButton(
-                imageSrc: "assets/Glogo.png",
-                text: "Sign in with Google",
-                onPressed: controller.googleSignInMethod(),
-              ),
-              SizedBox(height: 10),
             ],
           ),
         ),
