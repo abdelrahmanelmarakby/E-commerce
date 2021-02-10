@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kotykids/consts.dart';
 import 'package:kotykids/core/view_model/auth_view_model.dart';
-import 'package:kotykids/core/view_model/home_view_model.dart';
+import 'package:kotykids/core/view_model/control_view_model.dart';
 
 import 'auth/loginScreen.dart';
 
@@ -14,7 +14,7 @@ class ControlView extends GetWidget<AuthViewModel> {
     return Obx(() {
       return (Get.find<AuthViewModel>().user == null
           ? loginScreen()
-          : GetBuilder<HomeViewModel>(
+          : GetBuilder<ControlViewModel>(
               builder: (controller) => Scaffold(
                 body: controller.CurrentScreen,
                 bottomNavigationBar: _bottomNavigationBar(),
@@ -24,8 +24,8 @@ class ControlView extends GetWidget<AuthViewModel> {
   }
 
   _bottomNavigationBar() {
-    return GetBuilder<HomeViewModel>(
-      init: HomeViewModel(),
+    return GetBuilder<ControlViewModel>(
+      init: ControlViewModel(),
       builder: (controller) => FlashyTabBar(
           showElevation: true,
           animationDuration: Duration(milliseconds: 250),
