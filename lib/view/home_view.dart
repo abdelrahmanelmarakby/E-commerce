@@ -1,10 +1,8 @@
-import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kotykids/consts.dart';
 import 'package:kotykids/core/view_model/control_view_model.dart';
 import 'package:kotykids/core/view_model/home_view_model.dart';
-import 'package:kotykids/view/widgets/CategoryItem.dart';
 import 'package:kotykids/view/widgets/Txt.dart';
 
 class HomeView extends GetWidget<ControlViewModel> {
@@ -12,131 +10,192 @@ class HomeView extends GetWidget<ControlViewModel> {
   Widget build(BuildContext context) {
     return GetBuilder<HomeViewModel>(
       init: HomeViewModel(),
-      builder: (controller) => Scaffold(
-        body: Padding(
-          padding: const EdgeInsets.only(top: 25.0, left: 16, right: 16),
-          child: ListView(
-            children: [
-              SizedBox(
-                height: Get.height / 35,
+      builder: (controller) => controller.loading.value
+          ? Center(
+              child: CircularProgressIndicator(),
+            )
+          : Scaffold(
+              body: SingleChildScrollView(
+                child: Padding(
+                  padding:
+                      const EdgeInsets.only(top: 25.0, left: 16, right: 16),
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: Get.height / 35,
+                      ),
+                      _buildSearchBar(),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Txt(
+                        title: "Categories",
+                        size: 22,
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      _listViewCategory(),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Txt(
+                            title: "Best Selling",
+                          ),
+                          Txt(
+                            title: "See all",
+                            color: Colors.grey,
+                          )
+                        ],
+                      ),
+                      SizedBox(
+                        height: 12,
+                      ),
+                      _listViewProducts()
+                    ],
+                  ),
+                ),
               ),
-              _buildSearchBar(),
+            ),
+    );
+  }
+
+  Widget _listViewProducts() {
+    return GetBuilder<HomeViewModel>(
+      init: Get.find(),
+      builder: (controller) => Container(
+        height: 350,
+        child: ListView.separated(
+          itemCount: controller.productModel.length,
+          scrollDirection: Axis.horizontal,
+          itemBuilder: (context, index) {
+            return GestureDetector(
+              onTap: () {
+                /*  Get.to(DetailsView(
+                  model: controller.productModel[index],
+                ));*/
+              },
+              child: Padding(
+                padding: const EdgeInsets.only(bottom: 16.0),
+                child: Card(
+                  color: Colors.green.shade50,
+                  elevation: 6,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      width: MediaQuery.of(context).size.width * .5,
+                      child: Column(
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(50),
+                              color: Colors.grey.shade100,
+                            ),
+                            child: Container(
+                                height: 220,
+                                width: MediaQuery.of(context).size.width * .4,
+                                child: Image.network(
+                                  controller.productModel[index].image,
+                                  fit: BoxFit.fill,
+                                )),
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Txt(
+                            title: controller.productModel[index].name,
+                            align: Alignment.bottomLeft,
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          /*
+                          Expanded(
+                            child: Txt(
+                              title: controller.productModel[index].description,
+                              color: Colors.grey,
+                              align: Alignment.bottomLeft,
+                            ),
+                          ),*/
+                          Txt(
+                            title: controller.productModel[index].price
+                                    .toString() +
+                                " EGP",
+                            color: primaryColor,
+                            align: Alignment.bottomRight,
+                            size: 22,
+                            bold: true,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            );
+          },
+          separatorBuilder: (context, index) => SizedBox(
+            width: 20,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+Widget _buildSearchBar() {
+  return Container(
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(18),
+      color: Colors.grey.shade200,
+    ),
+    child: TextFormField(
+      decoration: InputDecoration(
+          border: InputBorder.none,
+          prefixIcon: const Icon(Icons.search),
+          hintText: "Search..."),
+    ),
+  );
+}
+
+Widget _listViewCategory() {
+  return GetBuilder<HomeViewModel>(
+    builder: (controller) => Container(
+      height: 100,
+      child: ListView.separated(
+        itemCount: controller.categoryModel.length,
+        scrollDirection: Axis.horizontal,
+        itemBuilder: (context, index) {
+          return Column(
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(50),
+                  color: Colors.green.shade50,
+                ),
+                height: 60,
+                width: 60,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Image.network(controller.categoryModel[index].image),
+                ),
+              ),
               SizedBox(
                 height: 20,
               ),
               Txt(
-                title: "Categories",
-                size: 22,
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              _buildCategoryListView(),
-              SizedBox(
-                height: 20,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Txt(
-                    title: "Best Selling",
-                  ),
-                  Txt(
-                    title: "See all",
-                    color: Colors.grey,
-                  )
-                ],
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              _buildBestSelling()
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildBestSelling() {
-    return Container(
-        height: Get.height / 2,
-        child: FadeInLeft(
-          child: ListView(
-            scrollDirection: Axis.horizontal,
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                    // color: Colors.grey,
-                    height: Get.height,
-                    width: Get.width / 2.2,
-                    child: Column(
-                      children: [
-                        Image.asset("assets/009-shirt.png"),
-                        Txt(
-                          size: 18,
-                        ),
-                        SizedBox(
-                          height: 5,
-                        ),
-                        Txt(
-                          size: 14,
-                          color: Colors.black54,
-                        ),
-                        Txt(
-                          color: primaryColor,
-                          title: "\$57.0",
-                        )
-                      ],
-                    )),
+                title: controller.categoryModel[index].name,
               ),
             ],
-          ),
-        ));
-  }
-
-  Widget _buildSearchBar() {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(18),
-        color: Colors.grey.shade200,
-      ),
-      child: TextFormField(
-        decoration: InputDecoration(
-            border: InputBorder.none,
-            prefixIcon: const Icon(Icons.search),
-            hintText: "Search..."),
-      ),
-    );
-  }
-
-  Widget _buildCategoryListView() {
-    return Container(
-      height: Get.height / 6,
-      child: FadeInLeft(
-        child: ListView(
-          scrollDirection: Axis.horizontal,
-          children: const [
-            CategoryItem(
-              title: "men",
-              ImageSrc: "assets/009-shirt.png",
-            ),
-            CategoryItem(
-              title: "Women",
-              ImageSrc: "assets/008-dress.png",
-            ),
-            CategoryItem(
-              title: "Accessories",
-              ImageSrc: "assets/007-diamond-ring.png",
-            ),
-            CategoryItem(
-              title: "Gadgets",
-              ImageSrc: "assets/006-handbag.png",
-            ),
-          ],
+          );
+        },
+        separatorBuilder: (context, index) => SizedBox(
+          width: 20,
         ),
       ),
-    );
-  }
+    ),
+  );
 }

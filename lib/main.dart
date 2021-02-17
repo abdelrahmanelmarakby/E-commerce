@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
       title: 'KotyKids',
       defaultTransition: Transition.rightToLeftWithFade,
       home: ControlView(),
-      theme: ThemeData(primaryColor: primaryColor),
+      theme: ThemeData(primaryColor: primaryColor, accentColor: primaryColor),
     );
   }
 }

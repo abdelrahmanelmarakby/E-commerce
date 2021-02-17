@@ -123,7 +123,7 @@ class loginScreen extends GetWidget<AuthViewModel> {
               SocialMediaButton(
                 imageSrc: "assets/Glogo.png",
                 text: "Sign in with Google",
-                onPressed: controller.googleSignInMethod(),
+                onPressed: controller.googleSignInMethod,
               ),
               SizedBox(height: 10),
             ],

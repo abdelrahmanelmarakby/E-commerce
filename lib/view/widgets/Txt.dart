@@ -5,11 +5,13 @@ class Txt extends StatelessWidget {
   final Color color;
   final double size;
   final Alignment align;
+  final bool bold;
   const Txt({
     this.align = Alignment.topLeft,
     this.title = "Add Title Here",
     this.color = Colors.black,
     this.size = 16,
+    this.bold = false,
     Key key,
   }) : super(key: key);
 
@@ -19,9 +21,11 @@ class Txt extends StatelessWidget {
       alignment: align,
       child: Text(
         title,
+        overflow: TextOverflow.fade,
         style: TextStyle(
           color: color,
           fontSize: size,
+          fontWeight: bold ? FontWeight.bold : FontWeight.normal,
         ),
       ),
     );

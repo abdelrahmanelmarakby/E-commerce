@@ -20,7 +20,7 @@ class CategoryItem extends StatelessWidget {
         children: [
           CircleAvatar(
             backgroundColor: Colors.green.shade50,
-            child: Image.asset(
+            child: Image.network(
               ImageSrc,
               height: Get.height / 20,
               color: Colors.black,
