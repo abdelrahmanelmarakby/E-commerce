@@ -5,6 +5,8 @@ import 'package:kotykids/core/view_model/control_view_model.dart';
 import 'package:kotykids/core/view_model/home_view_model.dart';
 import 'package:kotykids/view/widgets/Txt.dart';
 
+import 'details_view.dart';
+
 class HomeView extends GetWidget<ControlViewModel> {
   @override
   Widget build(BuildContext context) {
@@ -74,9 +76,9 @@ class HomeView extends GetWidget<ControlViewModel> {
           itemBuilder: (context, index) {
             return GestureDetector(
               onTap: () {
-                /*  Get.to(DetailsView(
+                Get.to(DetailsView(
                   model: controller.productModel[index],
-                ));*/
+                ));
               },
               child: Padding(
                 padding: const EdgeInsets.only(bottom: 16.0),
