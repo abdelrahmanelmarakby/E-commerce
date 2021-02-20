@@ -1,8 +1,11 @@
+import 'package:flutter/cupertino.dart';
+import 'package:kotykids/core/Util/color_extention.dart';
+
 class ProductModel {
   String name;
   String image;
   String description;
-  String color;
+  Color color;
   String size;
   String price;
 
@@ -18,7 +21,7 @@ class ProductModel {
     name = json['name'];
     image = json['image'];
     description = json['description'];
-    color = json['color'];
+    color = HexColor.fromHex(json['color']);
     size = json['size'];
     price = json['price'];
   }

@@ -83,6 +83,8 @@ class HomeView extends GetWidget<ControlViewModel> {
               child: Padding(
                 padding: const EdgeInsets.only(bottom: 16.0),
                 child: Card(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12)),
                   color: Colors.green.shade50,
                   elevation: 6,
                   child: Padding(
@@ -110,6 +112,7 @@ class HomeView extends GetWidget<ControlViewModel> {
                           Txt(
                             title: controller.productModel[index].name,
                             align: Alignment.bottomLeft,
+                            bold: true,
                           ),
                           SizedBox(
                             height: 10,

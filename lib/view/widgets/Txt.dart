@@ -6,6 +6,7 @@ class Txt extends StatelessWidget {
   final double size;
   final Alignment align;
   final bool bold;
+  final double height;
   const Txt({
     this.align = Alignment.topLeft,
     this.title = "Add Title Here",
@@ -13,6 +14,7 @@ class Txt extends StatelessWidget {
     this.size = 16,
     this.bold = false,
     Key key,
+    this.height = 1,
   }) : super(key: key);
 
   @override
@@ -21,8 +23,11 @@ class Txt extends StatelessWidget {
       alignment: align,
       child: Text(
         title,
-        overflow: TextOverflow.fade,
+        maxLines: 5,
+        overflow: TextOverflow.ellipsis,
         style: TextStyle(
+          height: height,
+          fontFamily: "font",
           color: color,
           fontSize: size,
           fontWeight: bold ? FontWeight.bold : FontWeight.normal,
