@@ -8,7 +8,11 @@ class Button extends StatelessWidget {
   final String title;
   final Function onPressed;
   const Button({
-    Key key, this.color=primaryColor, this.titleColor=Colors.white, this.title, this.onPressed,
+    Key key,
+    this.color = primaryColor,
+    this.titleColor = Colors.white,
+    this.title,
+    @required this.onPressed,
   }) : super(key: key);
 
   @override
@@ -22,7 +26,7 @@ class Button extends StatelessWidget {
         color: Colors.white,
         align: Alignment.center,
       ),
-      color:color ,
+      color: color,
     );
   }
 }

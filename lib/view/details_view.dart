@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:kotykids/core/view_model/cart_view_model.dart';
+import 'package:kotykids/model/cart_product_model.dart';
 import 'package:kotykids/model/product_model.dart';
 import 'package:kotykids/view/widgets/Button.dart';
 import 'package:kotykids/view/widgets/Txt.dart';
@@ -95,14 +97,14 @@ class DetailsView extends StatelessWidget {
                         ],
                       ),
                       SizedBox(
-                        height: 15,
+                        height: 20,
                       ),
                       Txt(
                         title: 'Details',
-                        size: 18,
+                        size: 22,
                       ),
                       SizedBox(
-                        height: 20,
+                        height: 00,
                       ),
                       Txt(
                         title: model.description,
@@ -114,35 +116,47 @@ class DetailsView extends StatelessWidget {
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(30),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    children: [
-                      Txt(
-                        title: "PRICE ",
-                        size: 22,
-                        color: Colors.grey,
-                      ),
-                      Txt(
-                        title: model.price + "EGP",
-                        color: primaryColor,
-                        size: 18,
-                      )
-                    ],
-                  ),
-                  Container(
-                    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                    width: Get.width / 2,
-                    height: Get.height / 12,
-                    child: Button(
-                      onPressed: () {},
-                      title: 'Add',
+            Container(
+              color: Colors.green.shade50,
+              child: Padding(
+                padding: const EdgeInsets.all(30),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      children: [
+                        Txt(
+                          title: "PRICE ",
+                          size: 22,
+                          color: Colors.grey,
+                        ),
+                        Txt(
+                          title: model.price + "EGP",
+                          color: primaryColor,
+                          size: 18,
+                        )
+                      ],
                     ),
-                  ),
-                ],
+                    GetBuilder<CartViewModel>(
+                      init: CartViewModel(),
+                      builder: (controller) => Container(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                        width: Get.width / 2,
+                        height: Get.height / 12,
+                        child: Button(
+                          onPressed: controller.addProduct(CartProductModel(
+                            name: model.name,
+                            image: model.image,
+                            price: model.price,
+                            quantity: 1,
+                          )),
+                          title: 'Add',
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             )
           ],

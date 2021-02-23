@@ -27,7 +27,7 @@ class ControlView extends GetWidget<AuthViewModel> {
     return GetBuilder<ControlViewModel>(
       init: ControlViewModel(),
       builder: (controller) => FlashyTabBar(
-          showElevation: true,
+          showElevation: false,
           animationDuration: Duration(milliseconds: 250),
           backgroundColor: Colors.green.shade50,
           selectedIndex: controller.navIndex,
