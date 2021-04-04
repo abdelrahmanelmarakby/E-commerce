@@ -90,7 +90,7 @@ class HomeView extends GetWidget<ControlViewModel> {
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Container(
-                      width: MediaQuery.of(context).size.width * .5,
+                      width: Get.width * .5,
                       child: Column(
                         children: [
                           Container(

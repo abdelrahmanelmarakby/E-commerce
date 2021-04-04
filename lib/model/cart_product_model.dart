@@ -7,20 +7,20 @@ class CartProductModel {
   CartProductModel({this.name, this.image, this.price, this.quantity});
 
   CartProductModel.fromJson(
-    Map<String, dynamic> json,
+    Map<dynamic, dynamic> json,
   ) {
     name = json['name'];
     image = json['image'];
     price = json['price'];
-    quantity = json[quantity];
+    quantity = json['quantity'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['name'] = this.name;
-    data['image'] = this.image;
-    data['price'] = this.price;
-    data['quantity'] = this.quantity;
+    final Map<dynamic, dynamic> data = new Map<dynamic, dynamic>();
+    data['name'] = name;
+    data['image'] = image;
+    data['price'] = price;
+    data['quantity'] = quantity;
     return data;
   }
 }

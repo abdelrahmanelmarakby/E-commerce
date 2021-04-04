@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 
-final String tableCartProduct = 'cartProduct';
+final String tableCartProduct = 'CartProduct';
 final String columnName = 'name';
 final String columnImage = 'image';
 final String columnQuantity = 'quantity';

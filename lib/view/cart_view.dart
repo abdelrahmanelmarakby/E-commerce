@@ -154,9 +154,9 @@ class CartView extends StatelessWidget {
                     ],
                   ),
                   Container(
-                    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                    width: Get.width / 2,
-                    height: Get.height / 12,
+                    padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+                    width: Get.width / 2.5,
+                    height: Get.height / 10,
                     child: Button(
                       onPressed: () {},
                       title: 'CHECKOUT',

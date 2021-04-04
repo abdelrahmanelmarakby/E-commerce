@@ -143,9 +143,10 @@ class DetailsView extends StatelessWidget {
                         padding:
                             EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                         width: Get.width / 2,
-                        height: Get.height / 12,
+                        height: Get.height / 9,
                         child: Button(
-                          onPressed: controller.addProduct(CartProductModel(
+                          onPressed: () =>
+                              controller.addProduct(CartProductModel(
                             name: model.name,
                             image: model.image,
                             price: model.price,

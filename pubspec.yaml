@@ -19,7 +19,6 @@ dependencies:
   sqflite: ^1.3.2+3
   flutter_slidable: ^0.5.7
   flutter_statusbar_manager: ^2.0.0
-  glassmorphism: ^1.0.6
   path: ^1.7.0
 dev_dependencies:
   flutter_test:
