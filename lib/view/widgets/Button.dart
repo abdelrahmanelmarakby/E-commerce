@@ -3,30 +3,35 @@ import 'package:kotykids/consts.dart';
 import 'package:kotykids/view/widgets/Txt.dart';
 
 class Button extends StatelessWidget {
-  final Color color;
-  final Color titleColor;
   final String title;
+
+  final Color color;
+
   final Function onPressed;
+
+  final Color titleColor;
   const Button({
     Key key,
-    this.color = primaryColor,
     this.titleColor = Colors.white,
-    this.title,
     @required this.onPressed,
+    this.title = 'Write text ',
+    this.color = primaryColor,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return FlatButton(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-      padding: EdgeInsets.all(16),
-      onPressed: onPressed,
-      child: Txt(
-        title: title,
-        color: Colors.white,
-        align: Alignment.center,
+      shape: new RoundedRectangleBorder(
+        borderRadius: new BorderRadius.circular(10.0),
       ),
-      color: color,
+      padding: EdgeInsets.all(10),
+      onPressed: onPressed,
+      color: primaryColor,
+      child: Txt(
+        align: Alignment.center,
+        title: title,
+        color: titleColor,
+      ),
     );
   }
 }

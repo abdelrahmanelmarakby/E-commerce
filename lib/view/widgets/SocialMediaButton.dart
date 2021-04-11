@@ -20,7 +20,7 @@ class SocialMediaButton extends StatelessWidget {
       height: MediaQuery.of(context).size.height / 14,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       color: Colors.green.withOpacity(.1),
-      onPressed: () => onPressed,
+      onPressed: onPressed,
       child: Row(
         children: [
           Image.asset(imageSrc,

@@ -1,26 +1,15 @@
+import 'package:hive/hive.dart';
+
+@HiveType(typeId: 0)
 class CartProductModel {
+  @HiveField(0)
   String name;
+  @HiveField(1)
   String image;
+  @HiveField(2)
   String price;
+  @HiveField(3)
   int quantity;
 
   CartProductModel({this.name, this.image, this.price, this.quantity});
-
-  CartProductModel.fromJson(
-    Map<dynamic, dynamic> json,
-  ) {
-    name = json['name'];
-    image = json['image'];
-    price = json['price'];
-    quantity = json['quantity'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<dynamic, dynamic> data = new Map<dynamic, dynamic>();
-    data['name'] = name;
-    data['image'] = image;
-    data['price'] = price;
-    data['quantity'] = quantity;
-    return data;
-  }
 }
